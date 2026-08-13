@@ -64,10 +64,10 @@ It decides which to call, executes it, evaluates the result, and either calls an
       search_company_docs()      get_order_status()
                  │                          │
                  ▼                          │
-        ┌─────────────────┐                │
-        │    ChromaDB       │                │
-        │  (vector search)   │                │
-        └────────┬────────┘                │
+        ┌─────────────────┐                 │
+        │  ChromaDB       │                 │
+        │ (vector search) │                 │
+        └────────┬────────┘                 │
                  │                          │
                  └────────────┬─────────────┘
                               │
@@ -262,26 +262,6 @@ You need three things running:
 
 ---
 
-## Pushing this to GitHub
-
-### 1. Create a `.gitignore` (see below) so you don't commit generated files, secrets, or dependencies
-
-### 2. Initialize the repo (from the top-level `ai-support-agent` folder)
-```bash
-git init
-git add .
-git commit -m "Initial commit: AI support agent with tool-calling and RAG"
-```
-
-### 3. Create a new empty repository on GitHub
-Go to https://github.com/new, name it (e.g. `ai-support-agent`), **do not** initialize it with a README/`.gitignore`/license (you already have these locally), then create it.
-
-### 4. Connect and push
-```bash
-git branch -M main
-git remote add origin https://github.com/<your-username>/ai-support-agent.git
-git push -u origin main
-```
 
 ### 5. Make your repo look professional
 - Add a short 1–2 sentence description and topics/tags (`ai-agent`, `rag`, `llm`, `fastapi`, `ollama`) in the GitHub repo settings sidebar
