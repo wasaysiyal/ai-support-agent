@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI Support Agent — Dashboard</title>
+<link rel="stylesheet" href="dist/output.css" />
+<style>
+  body { font-family: 'Segoe UI', system-ui, sans-serif; }
+</style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+
+<header class="bg-slate-900 text-white px-8 py-5 flex items-center justify-between">
+  <div>
+    <h1 class="text-lg font-semibold">AI Support Agent</h1>
+    <p class="text-slate-400 text-sm">Ticket demo dashboard — MVP</p>
+  </div>
+  <span id="apiStatus" class="text-xs px-3 py-1 rounded-full bg-slate-700">checking API…</span>
+</header>
+
+<main class="max-w-5xl mx-auto p-8 grid gap-8 md:grid-cols-2">
+
+  <!-- Knowledge base panel -->
+  <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+    <h2 class="font-semibold mb-1">1. Knowledge Base</h2>
+    <p class="text-sm text-slate-500 mb-4">Upload FAQ / Returns / Shipping PDFs.</p>
+
+    <input id="fileInput" type="file" accept="application/pdf"
+           class="block w-full text-sm mb-3 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-slate-900 file:text-white hover:file:bg-slate-700 file:cursor-pointer cursor-pointer" />
+    <button onclick="uploadFile()" id="uploadBtn"
+            class="w-full bg-slate-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+      Upload &amp; Index PDF
+    </button>
+    <p id="uploadStatus" class="text-sm mt-3 text-slate-500"></p>
+
+    <div class="mt-5">
+      <h3 class="text-xs font-semibold uppercase text-slate-400 mb-2">Indexed documents</h3>
+      <ul id="docList" class="text-sm space-y-1 text-slate-600"></ul>
+    </div>
+  </section>
+
+  <!-- Ticket / reply panel -->
+  <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+    <h2 class="font-semibold mb-1">2. Customer Inquiry</h2>
+    <p class="text-sm text-slate-500 mb-4">Paste a customer email (simulates inbox).</p>
+
+    <textarea id="customerQuestion" rows="5" placeholder="e.g. Where is my order #4532? Or: Can I return an item after 30 days?"
+      class="w-full border border-slate-300 rounded-lg p-3 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-slate-800"></textarea>
+
+    <button onclick="generateReply()" id="generateBtn"
+            class="w-full bg-emerald-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition">
+      Generate AI Reply
+    </button>
+  </section>
+
+  <!-- Result panel, spans full width -->
+  <section id="resultSection" class="md:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 p-6 hidden fade-in">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="font-semibold">3. Suggested Reply</h2>
+      <span id="confidenceBadge" class="text-xs font-semibold px-3 py-1 rounded-full"></span>
+    </div>
+
+    <textarea id="replyText" rows="8"
+      class="w-full border border-slate-300 rounded-lg p-3 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-emerald-600"></textarea>
+
+    <p id="sourcesLine" class="text-xs text-slate-400 mb-4"></p>
+
+    <div class="flex gap-3">
+      <button onclick="approve()" class="flex-1 bg-emerald-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-emerald-700">✓ Approve &amp; Send</button>
+      <button onclick="reject()" class="flex-1 bg-red-50 text-red-700 py-2 rounded-lg text-sm font-medium hover:bg-red-100 border border-red-200">✗ Reject</button>
+    </div>
+    <p id="actionStatus" class="text-sm mt-3 font-medium"></p>
+  </section>
+
+</main>
+
+<script>
+const API_BASE = "http://localhost:8000";
+
+async function checkHealth() {
+  const badge = document.getElementById("apiStatus");
+  try {
+    const res = await fetch(`${API_BASE}/health`);
+    if (res.ok) {
+      badge.textContent = "API connected";
+      badge.className = "text-xs px-3 py-1 rounded-full bg-emerald-600";
+    } else throw new Error();
+  } catch {
+    badge.textContent = "API offline — start backend on :8000";
+    badge.className = "text-xs px-3 py-1 rounded-full bg-red-600";
+  }
+}
+
+async function loadDocuments() {
+  try {
+    const res = await fetch(`${API_BASE}/documents`);
+    const data = await res.json();
+    const list = document.getElementById("docList");
+    list.innerHTML = "";
+    if (!data.sources.length) {
+      list.innerHTML = `<li class="text-slate-400">No documents indexed yet.</li>`;
+      return;
+    }
+    data.sources.forEach(s => {
+      const li = document.createElement("li");
+      li.textContent = "📄 " + s;
+      list.appendChild(li);
+    });
+  } catch (e) { console.error(e); }
+}
+
+async function uploadFile() {
+  const input = document.getElementById("fileInput");
+  const status = document.getElementById("uploadStatus");
+  if (!input.files.length) { status.textContent = "Please choose a PDF first."; return; }
+
+  const btn = document.getElementById("uploadBtn");
+  btn.disabled = true; btn.textContent = "Indexing…";
+  status.textContent = "";
+
+  const formData = new FormData();
+  formData.append("file", input.files[0]);
+
+  try {
+    const res = await fetch(`${API_BASE}/upload`, { method: "POST", body: formData });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Upload failed");
+    status.textContent = `✓ ${data.message} (${data.chunks_indexed} chunks)`;
+    status.className = "text-sm mt-3 text-emerald-600 font-medium";
+    loadDocuments();
+  } catch (e) {
+    status.textContent = "Error: " + e.message;
+    status.className = "text-sm mt-3 text-red-600 font-medium";
+  } finally {
+    btn.disabled = false; btn.textContent = "Upload & Index PDF";
+  }
+}
+
+async function generateReply() {
+  const question = document.getElementById("customerQuestion").value.trim();
+  if (!question) { alert("Please paste a customer question first."); return; }
+
+  const btn = document.getElementById("generateBtn");
+  btn.disabled = true; btn.textContent = "Thinking…";
+
+  try {
+    const res = await fetch(`${API_BASE}/generate-reply`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Failed to generate reply");
+
+    document.getElementById("replyText").value = data.reply || "(No reply text was returned — this is a bug, please check the backend terminal for errors.)";
+    const conf = data.confidence ?? 0;
+    const badge = document.getElementById("confidenceBadge");
+    badge.textContent = `Confidence: ${conf}%`;
+    badge.className = "text-xs font-semibold px-3 py-1 rounded-full " +
+      (conf >= 85 ? "bg-emerald-100 text-emerald-700"
+       : conf >= 60 ? "bg-amber-100 text-amber-700"
+       : "bg-red-100 text-red-700");
+
+    const toolsLine = data.tools_used && data.tools_used.length
+      ? " • Tools used: " + data.tools_used.join(", ") : "";
+    document.getElementById("sourcesLine").textContent =
+      (data.sources && data.sources.length ? "Sources: " + data.sources.join(", ") : "No matching source documents found.") + toolsLine;
+
+    currentTicketId = data.ticket_id || null;
+    document.getElementById("actionStatus").textContent = "";
+    document.getElementById("resultSection").classList.remove("hidden");
+  } catch (e) {
+    alert("Error: " + e.message);
+  } finally {
+    btn.disabled = false; btn.textContent = "Generate AI Reply";
+  }
+}
+
+let currentTicketId = null;
+
+async function approve() {
+  if (!currentTicketId) return;
+  const status = document.getElementById("actionStatus");
+  try {
+    await fetch(`${API_BASE}/tickets/${currentTicketId}/approve`, { method: "POST" });
+    status.textContent = "✓ Ticket approved and marked as sent (demo only — no real email sent). Saved to ticket history.";
+    status.className = "text-sm mt-3 font-medium text-emerald-600";
+  } catch (e) {
+    status.textContent = "Error saving approval: " + e.message;
+    status.className = "text-sm mt-3 font-medium text-red-600";
+  }
+}
+
+async function reject() {
+  if (!currentTicketId) return;
+  const status = document.getElementById("actionStatus");
+  try {
+    await fetch(`${API_BASE}/tickets/${currentTicketId}/reject`, { method: "POST" });
+    status.textContent = "✗ Ticket rejected and saved to history. Edit the text above and try again, or handle manually.";
+    status.className = "text-sm mt-3 font-medium text-red-600";
+  } catch (e) {
+    status.textContent = "Error saving rejection: " + e.message;
+    status.className = "text-sm mt-3 font-medium text-red-600";
+  }
+}
+
+checkHealth();
+loadDocuments();
+</script>
+</body>
+</html>

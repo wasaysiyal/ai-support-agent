@@ -1,0 +1,21 @@
+# --- Python ---
+backend/venv/
+backend/__pycache__/
+*.pyc
+.env
+
+# --- Backend generated/local data (not source code) ---
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/vectorstore/
+backend/tickets.json
+
+# --- Node / frontend build output ---
+frontend/node_modules/
+frontend/dist/
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+*.log

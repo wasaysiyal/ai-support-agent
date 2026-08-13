@@ -1,0 +1,425 @@
+[
+  {
+    "id": "e54a1abe",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "Based on our return policy, all returns must be initiated within 30 days of delivery. If you have any questions or concerns about returning an item after 30 days, please contact our customer service team for assistance.",
+    "confidence": 60,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-11T16:14:39.271662+00:00"
+  },
+  {
+    "id": "e624d7e3",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "We're sorry, we couldn't fully process your request. A team member will get back to you shortly.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "get_order_status",
+      "get_order_status",
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-11T16:17:52.758556+00:00"
+  },
+  {
+    "id": "e6ad7eb1",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "",
+    "confidence": 0,
+    "sources": [],
+    "tools_used": [
+      "get_order_status",
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-11T16:19:13.021820+00:00"
+  },
+  {
+    "id": "d831bffb",
+    "customer_question": "What's the status of order 9999?",
+    "ai_reply": "{\n  \"reply\": \"Dear customer,\\n\\nThe status of your order number 9999 is Cancelled. We apologize for any inconvenience this may cause and appreciate your understanding.\\n\\nBest regards,\\nSupport Team\",\n  \"confidence\": 90,\n  \"reasoning\": \"get_order_status tool results directly answered the question with a clear status\"",
+    "confidence": 50,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-11T16:21:49.789643+00:00"
+  },
+  {
+    "id": "5d7eacb0",
+    "customer_question": "What is the refund policy for defective products?",
+    "ai_reply": "Based on our company's policies, we offer a refund for defective products within 30 days of delivery. For more information, please refer to our full refund policy document available on our website or contact our customer support team.",
+    "confidence": 60,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "rejected",
+    "created_at": "2026-08-11T16:24:10.686780+00:00",
+    "updated_at": "2026-08-11T16:25:55.774689+00:00"
+  },
+  {
+    "id": "04bc1490",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "Unfortunately, the return policy for our company does not have a grace period or allow returns after 30 days. If you need to return an item, please contact our customer service team within 30 days of purchase to initiate the return process.",
+    "confidence": 60,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T15:41:01.639323+00:00"
+  },
+  {
+    "id": "54e9f357",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "Based on our return policy, all returns must be initiated within 30 days of delivery. If you have any questions or concerns about returning an item after this time frame, please contact our customer service team.",
+    "confidence": 100,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs",
+      "search_company_docs"
+    ],
+    "status": "rejected",
+    "created_at": "2026-08-12T15:49:12.098647+00:00",
+    "updated_at": "2026-08-12T15:49:54.518248+00:00"
+  },
+  {
+    "id": "39c5c194",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Sorry, we are unable to locate order 4532. Please contact our customer support team for assistance with tracking your order.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "get_order_status",
+      "get_order_status",
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T15:51:27.324131+00:00"
+  },
+  {
+    "id": "7f4b1f1b",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "We could not find any information on an order with the ID 5555. If you can provide more details or check your order number, we'll be happy to help.",
+    "confidence": 0,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T15:53:02.751091+00:00"
+  },
+  {
+    "id": "3d281913",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "Sorry, we couldn't find any information on an order with ID 5555. Can you please check the order number and try again?",
+    "confidence": 0,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T15:57:26.771609+00:00"
+  },
+  {
+    "id": "30d50c65",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "Unfortunately, we don't have information on our return policy in the provided documents. Please contact us so we can assist you further.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:05:56.982388+00:00"
+  },
+  {
+    "id": "7b77166a",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped and is expected to arrive tomorrow. Please track it with DHL.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:07:37.173973+00:00"
+  },
+  {
+    "id": "b8532d26",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "We were unable to find an order with the number 5555 in our system. If you can provide more information about your order or contact us directly, we'll be happy to help.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:09:09.734082+00:00"
+  },
+  {
+    "id": "ab14409f",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "Sorry, we couldn't find any information on an order with the ID 5555. Please contact our support team for assistance.",
+    "confidence": 0,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:17:45.679856+00:00"
+  },
+  {
+    "id": "762cac0d",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "We don",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:20:10.362902+00:00"
+  },
+  {
+    "id": "278ecd7d",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "We're sorry, we couldn't generate a clear answer. A team member will follow up with you shortly.",
+    "confidence": 30,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:21:22.509890+00:00"
+  },
+  {
+    "id": "f74e6bfc",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped via DHL and is expected to arrive tomorrow. You can track the status of your order on our website or through the carrier’s tracking system.",
+    "confidence": 90,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:22:51.241907+00:00"
+  },
+  {
+    "id": "75b75f50",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "We're sorry, we couldn't generate a clear answer. A team member will follow up with you shortly.",
+    "confidence": 30,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:33:22.015526+00:00"
+  },
+  {
+    "id": "fa1eac08",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped via DHL and is expected to arrive tomorrow. You can track the status of your order on our website or through the carrier’s tracking system.",
+    "confidence": 90,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:34:09.703163+00:00"
+  },
+  {
+    "id": "61d209d8",
+    "customer_question": "What's the status of order 5555?",
+    "ai_reply": "Sorry, we couldn't find any information on order 5555. It's possible that the order was cancelled or never existed.",
+    "confidence": 0,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:36:17.912445+00:00"
+  },
+  {
+    "id": "ac959ff1",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped via DHL and is expected to arrive tomorrow. You can track the status of your order on our website or through the carrier’s tracking system.",
+    "confidence": 90,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-12T16:50:35.085927+00:00"
+  },
+  {
+    "id": "b2a747a2",
+    "customer_question": "Can I return an item after 30 days?",
+    "ai_reply": "Unfortunately, we don't have information on our return policy in the provided documents. Please contact us again with your question and we will do our best to assist you.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:29:50.004844+00:00"
+  },
+  {
+    "id": "e2740d5b",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped and is expected to arrive tomorrow. You can track the status of your shipment with DHL.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:30:59.499373+00:00"
+  },
+  {
+    "id": "0bc1d5cd",
+    "customer_question": "What's the status of order 9999?",
+    "ai_reply": "We apologize for the inconvenience. Order #9999 has been cancelled.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:32:18.680272+00:00"
+  },
+  {
+    "id": "eb86a2b8",
+    "customer_question": "I ordered item 4532 but I'm wondering, can I still return it if it arrives damaged?",
+    "ai_reply": "Unfortunately, we don't have information on our return policy for damaged items in the provided documents. Please contact us directly so we can assist you further.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:34:31.806845+00:00"
+  },
+  {
+    "id": "28315643",
+    "customer_question": "I ordered item 4532 but I'm wondering, can I still return it if it arrives damaged?",
+    "ai_reply": "Unfortunately, our return policy does not cover damaged items. If you have received a damaged item, please contact us at [insert contact information] to discuss possible alternatives or refunds. Our customer service team will be happy to assist you.",
+    "confidence": 0,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:43:34.620908+00:00"
+  },
+  {
+    "id": "0299b21a",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped via DHL and is expected to arrive tomorrow. You can track the status of your order on our website or through the carrier’s tracking service.",
+    "confidence": 90,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:45:46.595950+00:00"
+  },
+  {
+    "id": "e95ef162",
+    "customer_question": "What's the status of order 9999?",
+    "ai_reply": "We're sorry, we couldn't generate a clear answer. A team member will follow up with you shortly.",
+    "confidence": 30,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:47:07.264700+00:00"
+  },
+  {
+    "id": "88de675d",
+    "customer_question": "What's the status of order 9999?",
+    "ai_reply": "We're sorry, we couldn't generate a clear answer. A team member will follow up with you shortly.",
+    "confidence": 30,
+    "sources": [],
+    "tools_used": [
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:47:39.597433+00:00"
+  },
+  {
+    "id": "c9084169",
+    "customer_question": "What's the status of order 9999?",
+    "ai_reply": "Order #9999 has been cancelled. We do not have any further information about this order.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status",
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:52:55.757679+00:00"
+  },
+  {
+    "id": "a249b253",
+    "customer_question": "Where is my order 4532?",
+    "ai_reply": "Your order 4532 has been shipped and is expected to arrive tomorrow via DHL. You can track the status of your shipment on the carrier's website.",
+    "confidence": 100,
+    "sources": [],
+    "tools_used": [
+      "get_order_status",
+      "get_order_status"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:54:31.404206+00:00"
+  },
+  {
+    "id": "7ae2ffac",
+    "customer_question": "I ordered item 4532 but I'm wondering, can I still return it if it arrives damaged?",
+    "ai_reply": "Unfortunately, we don't have a specific policy regarding returns for damaged items in our search results. However, you can contact our customer service team or refer to the OHS Regulations FAQs on our website for more information.",
+    "confidence": 60,
+    "sources": [
+      "0009-518-Item-04-INDESIGN-FAQ-Template 3 - MINUS FIRST QUESTION.pdf"
+    ],
+    "tools_used": [
+      "get_order_status",
+      "search_company_docs"
+    ],
+    "status": "pending",
+    "created_at": "2026-08-13T01:57:17.756805+00:00"
+  }
+]
