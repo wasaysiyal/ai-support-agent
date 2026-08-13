@@ -48,19 +48,19 @@ It decides which to call, executes it, evaluates the result, and either calls an
                               │
                               ▼
                  ┌─────────────────────────┐
-                 │  Deterministic pre-fetch  │   (regex-based order ID
-                 │  (order number detection)  │   detection — see below)
+                 │ Deterministic pre-fetch │   (regex-based order ID
+                 │(order number detection) │   detection — see below)
                  └────────────┬────────────┘
                               │
                               ▼
                  ┌─────────────────────────┐
-                 │      Agent loop (LLM)     │◄──┐
-                 │   decides which tool(s)    │   │
-                 │        to call             │   │ tool result fed
+                 │      Agent loop (LLM)   │◄──┐
+                 │   decides which tool(s) │   │
+                 │        to call          │   │ tool result fed
                  └────────────┬────────────┘   │ back into context
-                              │                  │
-                 ┌────────────┴────────────┐    │
-                 ▼                          ▼    │
+                              │                │
+                 ┌────────────┴────────────┐   │
+                 ▼                         ▼   │
       search_company_docs()      get_order_status()
                  │                          │
                  ▼                          │
